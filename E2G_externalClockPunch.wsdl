@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://services.workforcesoftware.com/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ax2194="http://webservices.workforcesoftware.com/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax2190="http://ws.apache.org/axis2/xsd" xmlns:ax2191="http://data.service.webservices.workforcesoftware.com/xsd" xmlns:tns="http://services.workforcesoftware.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://services.workforcesoftware.com">
+    <wsdl:documentation>E2G_externalClockPunch</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax2192="http://data.service.webservices.workforcesoftware.com/xsd" xmlns:ax2195="http://webservices.workforcesoftware.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:import namespace="http://data.service.webservices.workforcesoftware.com/xsd"/>
+            <xs:import namespace="http://webservices.workforcesoftware.com/xsd"/>
+            <xs:complexType name="E2g_external_clock_punch_request">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalData" nillable="true" type="ax2190:E2g_generic_field"/>
+                    <xs:element minOccurs="0" name="assignmentId" nillable="true" type="ax2191:WSGeneratedId"/>
+                    <xs:element minOccurs="0" name="deviceProfile" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="displayEmployee" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="extendedPunchInfo" nillable="true" type="ax2190:E2g_clock_punch_info"/>
+                    <xs:element minOccurs="0" name="isoTimestamp" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="overrideExceptions" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="payCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="punchTimeValue" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="punchTimeZone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="transType" nillable="true" type="ax2190:Dcd_transaction_typeChoice"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="E2g_generic_field">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="fieldName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fieldValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="E2g_clock_punch_info">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="badgeInfo" nillable="true" type="ax2190:E2g_badge"/>
+                    <xs:element minOccurs="0" name="terminalName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="terminalType" nillable="true" type="ax2190:Swipe_sourceChoice"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="E2g_badge">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="badgeGroup" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="badgeId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="badgeNumber" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="badgeType" nillable="true" type="ax2190:Badge_id_typeChoice"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Badge_id_typeChoice">
+                <xs:complexContent>
+                    <xs:extension base="ax2191:WSChoiceBase">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="badge_id_type" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Swipe_sourceChoice">
+                <xs:complexContent>
+                    <xs:extension base="ax2191:WSChoiceBase">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="swipe_source" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="Dcd_transaction_typeChoice">
+                <xs:complexContent>
+                    <xs:extension base="ax2191:WSChoiceBase">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="dcd_transaction_type" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="E2G_externalClockPunchResult">
+                <xs:complexContent>
+                    <xs:extension base="ax2194:WSResultObjectBase">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="result" nillable="true" type="ax2190:E2g_external_clock_punch_result"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="E2g_external_clock_punch_result">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="assignmentId" nillable="true" type="ax2191:WSGeneratedId"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="calculationException" nillable="true" type="ax2190:E2g_clock_punch_calculation_exception"/>
+                    <xs:element minOccurs="0" name="errorDetails" nillable="true" type="ax2190:E2g_clock_punch_exception"/>
+                    <xs:element minOccurs="0" name="isoTimestamp" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="punchTimeValue" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="punchTimeZone" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="swipeResult" nillable="true" type="ax2190:Swipe_process_resultChoice"/>
+                    <xs:element minOccurs="0" name="transType" nillable="true" type="ax2190:Dcd_transaction_typeChoice"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="E2g_clock_punch_calculation_exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="overrideable" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="preventedPunch" nillable="true" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="severity" nillable="true" type="ax2190:Exception_severityChoice"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Exception_severityChoice">
+                <xs:complexContent>
+                    <xs:extension base="ax2191:WSChoiceBase">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="exception_severity" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="E2g_clock_punch_exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="exceptionCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="exceptionMessage" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Swipe_process_resultChoice">
+                <xs:complexContent>
+                    <xs:extension base="ax2191:WSChoiceBase">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="swipe_process_result" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://data.service.webservices.workforcesoftware.com/xsd">
+            <xs:complexType name="WSGeneratedId">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WSChoiceBase">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservices.workforcesoftware.com/xsd">
+            <xs:complexType name="WSResultObjectBase">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="detailedErrorMessage" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="operationSuccessful" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="resultCode" type="xs:int"/>
+                    <xs:element minOccurs="0" name="resultDescription" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2193="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.workforcesoftware.com/xsd">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="E2G_externalClockPunch">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="punchRequests" nillable="true" type="ax2190:E2g_external_clock_punch_request"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="E2G_externalClockPunchResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2190:E2G_externalClockPunchResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="E2G_externalClockPunchRequest">
+        <wsdl:part name="parameters" element="ns:E2G_externalClockPunch"/>
+    </wsdl:message>
+    <wsdl:message name="E2G_externalClockPunchResponse">
+        <wsdl:part name="parameters" element="ns:E2G_externalClockPunchResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="E2G_externalClockPunchPortType">
+        <wsdl:operation name="E2G_externalClockPunch">
+            <wsdl:input message="tns:E2G_externalClockPunchRequest" wsaw:Action="urn:E2G_externalClockPunch"/>
+            <wsdl:output message="tns:E2G_externalClockPunchResponse" wsaw:Action="urn:E2G_externalClockPunchResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="E2G_externalClockPunchSoap11Binding" type="tns:E2G_externalClockPunchPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="E2G_externalClockPunch">
+            <soap:operation soapAction="urn:E2G_externalClockPunch" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="E2G_externalClockPunchSoap12Binding" type="tns:E2G_externalClockPunchPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="E2G_externalClockPunch">
+            <soap12:operation soapAction="urn:E2G_externalClockPunch" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="E2G_externalClockPunchHttpBinding" type="tns:E2G_externalClockPunchPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="E2G_externalClockPunch">
+            <http:operation location="E2G_externalClockPunch"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="E2G_externalClockPunch">
+        <wsdl:port name="E2G_externalClockPunchHttpsSoap11Endpoint" binding="tns:E2G_externalClockPunchSoap11Binding">
+            <soap:address location="https://watts.wta-us2.wfs.cloud/workforce/services/E2G_externalClockPunch.E2G_externalClockPunchHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="E2G_externalClockPunchHttpSoap11Endpoint" binding="tns:E2G_externalClockPunchSoap11Binding">
+            <soap:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+        <wsdl:port name="E2G_externalClockPunchHttpSoap12Endpoint" binding="tns:E2G_externalClockPunchSoap12Binding">
+            <soap12:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+        <wsdl:port name="E2G_externalClockPunchHttpsSoap12Endpoint" binding="tns:E2G_externalClockPunchSoap12Binding">
+            <soap12:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+        <wsdl:port name="E2G_externalClockPunchHttpsEndpoint" binding="tns:E2G_externalClockPunchHttpBinding">
+            <http:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+        <wsdl:port name="E2G_externalClockPunchHttpEndpoint" binding="tns:E2G_externalClockPunchHttpBinding">
+            <http:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
