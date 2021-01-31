@@ -1,50 +1,4 @@
-var E2G_externalClockPunch = {
-    E2G_externalClockPunch: {
-        MyPort: {
-            E2G_externalClockPunchRequest: function(args) {
-                console.log("llamada")
-                return {
-                    name: args.name
-                };
-            },
 
-            // This is how to define an asynchronous function with a callback.
-            MyAsyncFunction: function(args, callback) {
-                // do some work
-                console.log("async")
-                callback({
-                    name: args.name
-                });
-            },
-
-            // This is how to define an asynchronous function with a Promise.
-            MyPromiseFunction: function(args) {
-                return new Promise((resolve) => {
-                  // do some work
-                  console.log("promise")
-                  resolve({
-                    name: args.name
-                  });
-                });
-            },
-
-            // This is how to receive incoming headers
-            HeadersAwareFunction: function(args, cb, headers) {
-                return {
-                    name: headers.Token
-                };
-            },
-
-            // You can also inspect the original `req`
-            reallyDetailedFunction: function(args, cb, headers, req) {
-                console.log('SOAP `reallyDetailedFunction` request from ' + req.connection.remoteAddress);
-                return {
-                    name: headers.Token
-                };
-            }
-        } 
-    }
-};
 
 // the service
 var serviceObject = {
@@ -75,31 +29,66 @@ var serviceObject = {
 
   // the splitter function, used by the service
 function splitter_function(args) {
-    console.log('splitter_function');
-    console.log(JSON.stringify(args));
-    var splitter = args.splitter;
-    var splitted_msg = args.message.split(splitter);
-    var result = [];
-    for(var i=0; i<splitted_msg.length; i++){
-      result.push(splitted_msg[i]);
+    console.log('punch '+ contador);
+    contador++;
+    //console.log(JSON.stringify(args.punchRequests[0]));
+    if (args.punchRequests[0].additionalData[0].fieldName == 'IDMARCA'){
+        idmarca =args.punchRequests[0].additionalData[0].fieldValue;
     }
+
+    badgeGroup = args.punchRequests[0].extendedPunchInfo.badgeInfo.badgeGroup;
+    badgeId = args.punchRequests[0].extendedPunchInfo.badgeInfo.badgeId;
+    badgeType = args.punchRequests[0].extendedPunchInfo.badgeInfo.badgeType.badge_id_type;
+    timeStamp = args.punchRequests[0].isoTimestamp;
+    payCode = args.punchRequests[0].payCode;
+    transType = args.punchRequests[0].transType.dcd_transaction_type;
+
+    console.log(idmarca,badgeGroup,badgeId,badgeType,timeStamp,payCode,transType);
+
+    //con.connect(function(err) {
+  //if (err) throw err;
+  //console.log("Connected!");
+  var sql = "INSERT INTO marcajes (badgeid,badgetype,timestamp,paycode,transtype) VALUES ?";
+  var values = [
+    [badgeId,badgeType,timeStamp,payCode,transType],
+  ];
+  con.query(sql, [values], function (err, result) {
+    if (err) throw err;
+    console.log("Number of records inserted: " + result.affectedRows);
+  });
+//});
+    
+    var result = [];
+    //for(var i=0; i<splitted_msg.length; i++){
+      //result.push(Number of records inserted: " + result.affectedRows);
+    //}
     return {
         result: result
         }
 }
 
+var contador = 1;
 var http = require('http');
 var soap = require('soap');
 var bodyParser = require('body-parser');
 var express = require('express');
 var xml = require('fs').readFileSync('E2G_externalClockPunch.wsdl', 'utf8');
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "13Julio2015",
+  database: "marcas",
+  insecureAuth : true
+});
 
 //http server example
 var server = http.createServer(function(request,response) {
     response.end('404: Not Found: ' + request.url);
 });
-
 server.listen(8000);
+
 soap.listen(server, '/wsdl', serviceObject, xml, function(){
   console.log('server initialized');
 });
