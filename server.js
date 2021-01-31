@@ -1,5 +1,3 @@
-
-
 // the service
 var serviceObject = {
     E2G_externalClockPunch: {
