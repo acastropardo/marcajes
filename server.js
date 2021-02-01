@@ -46,7 +46,7 @@ function splitter_function(args) {
     //con.connect(function(err) {
   //if (err) throw err;
   //console.log("Connected!");
-  var sql = "INSERT INTO marcajes (badgeid,badgetype,timestamp,paycode,transtype) VALUES ?";
+  var sql = "INSERT INTO marcajes_3 (badgeid,badgetype,timestamp,paycode,transtype) VALUES ?";
   var values = [
     [badgeId,badgeType,timeStamp,payCode,transType],
   ];
@@ -74,9 +74,9 @@ var xml = require('fs').readFileSync('E2G_externalClockPunch.wsdl', 'utf8');
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: "localhost",
+  host: "theacpinnovacion.com",
   user: "root",
-  password: "13Julio2015",
+  password: "123456",
   database: "marcas",
   insecureAuth : true
 });
@@ -85,7 +85,7 @@ var con = mysql.createConnection({
 var server = http.createServer(function(request,response) {
     response.end('404: Not Found: ' + request.url);
 });
-server.listen(8000);
+server.listen(8002);
 
 soap.listen(server, '/wsdl', serviceObject, xml, function(){
   console.log('server initialized');
