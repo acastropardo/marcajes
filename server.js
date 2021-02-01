@@ -46,7 +46,7 @@ function splitter_function(args) {
     //con.connect(function(err) {
   //if (err) throw err;
   //console.log("Connected!");
-  var sql = "INSERT INTO marcajes_3 (badgeid,badgetype,timestamp,paycode,transtype) VALUES ?";
+  var sql = "INSERT INTO marcajes_5 (badgeid,badgetype,timestamp,paycode,transtype) VALUES ?";
   var values = [
     [badgeId,badgeType,timeStamp,payCode,transType],
   ];
