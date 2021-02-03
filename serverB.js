@@ -24,9 +24,15 @@ var serviceObject = {
         }
       }
   };
-//setTimeout(function2, 3000);
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}   
   // the splitter function, used by the service
 function splitter_function(args) {
+	sleep(3000);
     console.log('punch '+ contador);
     contador++;
     //console.log(JSON.stringify(args.punchRequests[0]));
@@ -46,6 +52,7 @@ function splitter_function(args) {
     //con.connect(function(err) {
   //if (err) throw err;
   //console.log("Connected!");
+  sleep();
   var sql = "INSERT INTO marcajes (badgeid,badgetype,timestamp,paycode,transtype) VALUES ?";
   var values = [
     [badgeId,badgeType,timeStamp,payCode,transType],
@@ -62,7 +69,7 @@ function splitter_function(args) {
     resultDescription: null,
     result: {
     	assignmentId: {
-    		id: 2313581012
+    		id: contador
     	},
     	isoTimestamp: '2021-01-27T16:14:31Z',
     	swipeResult: {
