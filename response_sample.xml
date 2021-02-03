@@ -1,0 +1,26 @@
+<ns:E2G_externalClockPunchResponse xmlns:ns="http://services.workforcesoftware.com/xsd" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns:return xmlns:ax2195="http://ws.apache.org/axis2/xsd" xmlns:ax2196="http://data.service.webservices.workforcesoftware.com/xsd" xmlns:ax2199="http://webservices.workforcesoftware.com/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2195:E2G_externalClockPunchResult">
+    <ax2199:detailedErrorMessage xsi:nil="true"/>
+    <ax2199:operationSuccessful>true</ax2199:operationSuccessful>
+    <ax2199:resultCode>0</ax2199:resultCode>
+    <ax2199:resultDescription/>
+    <ax2195:result xsi:type="ax2195:E2g_external_clock_punch_result">
+      <ax2195:assignmentId xsi:type="ax2196:WSGeneratedId">
+        <ax2196:id>2313581012</ax2196:id>
+      </ax2195:assignmentId>
+      <ax2195:errorDetails xsi:type="ax2195:E2g_clock_punch_exception">
+        <ax2195:exceptionCode xsi:nil="true"/>
+        <ax2195:exceptionMessage xsi:nil="true"/>
+      </ax2195:errorDetails>
+      <ax2195:isoTimestamp>2021-01-27T16:14:31Z</ax2195:isoTimestamp>
+      <ax2195:punchTimeValue xsi:nil="true"/>
+      <ax2195:punchTimeZone xsi:nil="true"/>
+      <ax2195:swipeResult xsi:type="ax2195:Swipe_process_resultChoice">
+        <ax2195:swipe_process_result>SUCCESS</ax2195:swipe_process_result>
+      </ax2195:swipeResult>
+      <ax2195:transType xsi:type="ax2195:Dcd_transaction_typeChoice">
+        <ax2195:dcd_transaction_type>SWIPE_OUT</ax2195:dcd_transaction_type>
+      </ax2195:transType>
+    </ax2195:result>
+  </ns:return>
+</ns:E2G_externalClockPunchResponse>
