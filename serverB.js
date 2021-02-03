@@ -24,7 +24,7 @@ var serviceObject = {
         }
       }
   };
-
+//setTimeout(function2, 3000);
   // the splitter function, used by the service
 function splitter_function(args) {
     console.log('punch '+ contador);
@@ -76,9 +76,7 @@ function splitter_function(args) {
  
 
     var result = [];
-    //for(var i=0; i<splitted_msg.length; i++){
       result.push(salida);
-    //}
     return {
         return: result
         }
