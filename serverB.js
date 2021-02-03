@@ -71,11 +71,9 @@ function splitter_function(args) {
     	transType: {
     		dcd_transaction_type: 'SWIPE_OUT'
     	}
-    },
-    car: 'Honda' 
+    }
 };
  
-let data = JSON.stringify(salida);
 
     var result = [];
     //for(var i=0; i<splitted_msg.length; i++){

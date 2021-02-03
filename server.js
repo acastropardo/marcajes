@@ -56,12 +56,29 @@ function splitter_function(args) {
   });
 //});
     
+    let salida = { 
+    operationSuccessful: true,
+    resultCode: 0, 
+    resultDescription: null,
+    result: {
+      assignmentId: {
+        id: 2313581012
+      },
+      isoTimestamp: '2021-01-27T16:14:31Z',
+      swipeResult: {
+        swipe_process_result: 'SUCCESS'
+      },
+      transType: {
+        dcd_transaction_type: 'SWIPE_OUT'
+      }
+    }
+};
+ 
+
     var result = [];
-    //for(var i=0; i<splitted_msg.length; i++){
-      //result.push(Number of records inserted: " + result.affectedRows);
-    //}
+      result.push(salida);
     return {
-        result: result
+        return: result
         }
 }
 
