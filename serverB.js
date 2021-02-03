@@ -83,7 +83,7 @@ function splitter_function(args) {
  
 
     var result = [];
-      result.push(salida);
+      //result.push(salida);
     return {
         return: result
         }
